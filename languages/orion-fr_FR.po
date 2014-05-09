@@ -1,0 +1,256 @@
+# Copyright (C) 2014 Orion
+# This file is distributed under the same license as the Orion package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Orion 1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/orion\n"
+"POT-Creation-Date: 2014-05-09 11:07:31+00:00\n"
+"PO-Revision-Date: 2014-05-09 13:10+0100\n"
+"Last-Translator: seishynon <sshnn@outlook.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: admin/class-orion-admin.php:163 admin/views/dashboard.php:33
+#: admin/views/dashboard.php:164
+msgid "Settings"
+msgstr "Réglages"
+
+#: admin/includes/class-orion-api.php:157
+#: admin/includes/class-orion-api.php:214
+msgid "You've been banned."
+msgstr "Vous avez été banni."
+
+#: admin/includes/class-orion-api.php:231
+msgid "You've been kicked."
+msgstr "Vous avez été kick."
+
+#: admin/includes/class-orion-dashboard-screen.php:22
+#: admin/includes/class-orion-dashboard-screen.php:23
+msgid "Server Dashboard"
+msgstr "Tableau de bord du serveur"
+
+#: admin/includes/class-orion-settings-screen.php:45
+msgid "JSONAPI Credentials"
+msgstr "Identifiants JSONAPI"
+
+#: admin/includes/class-orion-settings-screen.php:52
+msgid "Server IP"
+msgstr "IP du serveur"
+
+#: admin/includes/class-orion-settings-screen.php:62
+msgid "JSONAPI port"
+msgstr "Port JSONAPI"
+
+#: admin/includes/class-orion-settings-screen.php:72
+msgid "JSONAPI username"
+msgstr "Nom d'utilisateur JSONAPI"
+
+#: admin/includes/class-orion-settings-screen.php:82
+msgid "JSONAPI password"
+msgstr "Mot de passe JSONAPI"
+
+#: admin/includes/class-orion-settings-screen.php:100
+msgid "Orion Settings"
+msgstr "Réglages d'Orion"
+
+#. #-#-#-#-#  orion.pot (Orion 1.0.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: admin/includes/class-orion-settings-screen.php:101
+msgid "Orion"
+msgstr "Orion"
+
+#: admin/views/dashboard.php:36
+msgid "Running <%= version %> with <%= plugins_count %> plugins"
+msgstr "Tourne sous <%= version %> avec <%= plugins_count %> plugins"
+
+#: admin/views/dashboard.php:39
+msgid "Loaded Worlds"
+msgstr "Mondes chargés"
+
+#: admin/views/dashboard.php:47
+msgid "Memory Usage"
+msgstr "Utilisation mémoire"
+
+#: admin/views/dashboard.php:55 admin/views/dashboard.php:190
+msgid "Connected players"
+msgstr "Joueurs connectés"
+
+#: admin/views/dashboard.php:69
+msgid "Connected Players"
+msgstr "Joueurs connectés"
+
+#: admin/views/dashboard.php:72
+msgid "Well, actually there is nobody on your server."
+msgstr "Il n'y aucun joueur connecté sur votre serveur."
+
+#: admin/views/dashboard.php:75
+msgid "Filter by name"
+msgstr "Filtrer par pseudonyme"
+
+#: admin/views/dashboard.php:87
+msgid "Manage Player"
+msgstr "Gérer le joueur"
+
+#: admin/views/dashboard.php:98
+msgid "Offline"
+msgstr "Hors-ligne"
+
+#: admin/views/dashboard.php:98
+msgid "Connected from <%= ip %>"
+msgstr "Connecté depuis <%= ip %>"
+
+#: admin/views/dashboard.php:102
+msgid "Stats"
+msgstr "Statistiques"
+
+#: admin/views/dashboard.php:104
+msgid "Health"
+msgstr "Vie"
+
+#: admin/views/dashboard.php:105
+msgid "Food level"
+msgstr "Nourriture"
+
+#: admin/views/dashboard.php:106
+msgid "XP level"
+msgstr "Niveau d'XP"
+
+#: admin/views/dashboard.php:108
+msgid "Balance"
+msgstr "Monnaie"
+
+#: admin/views/dashboard.php:113
+msgid "Miscellaneous"
+msgstr "Autres"
+
+#: admin/views/dashboard.php:115
+msgid "Gamemode"
+msgstr "Mode de jeu"
+
+#: admin/views/dashboard.php:118 admin/views/dashboard.php:173
+msgid "Normal"
+msgstr "Normal"
+
+#: admin/views/dashboard.php:119
+msgid "Creative"
+msgstr "Créatif"
+
+#: admin/views/dashboard.php:123
+msgid "OP:"
+msgstr "OP:"
+
+#: admin/views/dashboard.php:124 admin/views/dashboard.php:132
+#: admin/views/dashboard.php:140 admin/views/dashboard.php:181
+msgid "Yes"
+msgstr "Oui"
+
+#: admin/views/dashboard.php:124 admin/views/dashboard.php:132
+#: admin/views/dashboard.php:140 admin/views/dashboard.php:182
+msgid "No"
+msgstr "No"
+
+#: admin/views/dashboard.php:127
+msgid "De-OP"
+msgstr "De-OP"
+
+#: admin/views/dashboard.php:127
+msgid "OP"
+msgstr "OP"
+
+#: admin/views/dashboard.php:131
+msgid "Whitelisted:"
+msgstr "Whitelisté :"
+
+#: admin/views/dashboard.php:135
+msgid "Remove"
+msgstr "Retirer"
+
+#: admin/views/dashboard.php:135
+msgid "Add"
+msgstr "Ajouter"
+
+#: admin/views/dashboard.php:139
+msgid "Banned:"
+msgstr "Banni :"
+
+#: admin/views/dashboard.php:143
+msgid "Kick"
+msgstr "Kick"
+
+#: admin/views/dashboard.php:146
+msgid "Un-ban"
+msgstr "Pardonner"
+
+#: admin/views/dashboard.php:146
+msgid "Ban"
+msgstr "Bannir"
+
+#: admin/views/dashboard.php:168
+msgid "Difficulty"
+msgstr "Difficulté"
+
+#: admin/views/dashboard.php:171
+msgid "Easy"
+msgstr "Facile"
+
+#: admin/views/dashboard.php:172
+msgid "Hard"
+msgstr "Difficile"
+
+#: admin/views/dashboard.php:174
+msgid "Peaceful"
+msgstr "Paisible"
+
+#: admin/views/dashboard.php:179
+msgid "Enable PvP"
+msgstr "Activer le PvP"
+
+#: admin/views/dashboard.php:185
+msgid "Save"
+msgstr "Sauvegarder"
+
+#: admin/views/dashboard.php:193
+msgid "Weather"
+msgstr "Météo"
+
+#: admin/views/dashboard.php:218
+msgid "An error occured. Please try again later."
+msgstr "Une erreur est survenue. Merci de réessayer plus tard."
+
+#: admin/views/dashboard.php:224
+msgid "We couldn't establish a connection with your server."
+msgstr "Nous n'avons pas pu établir de connection avec votre serveur."
+
+#: admin/views/dashboard.php:225
+msgid "Please check your credentials and your server."
+msgstr "Vérifiez les identifiants utilisés pour la connexion."
+
+#: admin/views/dashboard.php:230
+msgid "Are you sure you want to ban <%= name %> ?"
+msgstr "Êtes-vous sûr de vouloir bannir <%= name %> ?"
+
+#: admin/views/dashboard.php:234
+msgid "Please specify a reason for this ban:"
+msgstr "Spécifiez une raison pour le bannissement :"
+
+#. Plugin URI of the plugin/theme
+msgid "@TODO"
+msgstr "@TODO"
+
+#. Description of the plugin/theme
+msgid "Administrate your Minecraft server from your WordPress dashboard"
+msgstr "Administrez votre serveur Minecraft depuis votre panel WordPress"
+
+#. Author of the plugin/theme
+msgid "seishynon"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "sshnn@outlook.com"
+msgstr ""
+
+#~ msgid "Server Admin"
+#~ msgstr "Administration du serveur"

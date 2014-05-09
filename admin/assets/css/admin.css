@@ -1,0 +1,242 @@
+/* This stylesheet is used to style the admin option form of the plugin. */
+.orion-list {
+	max-height: 200px;
+	overflow: auto;
+	overflow-x: hidden;
+}
+
+.orion-list li {
+	line-height: 28px !important;
+	border-top: 1px solid #eee;
+	padding-top: 6px;
+	padding-right: 6px;
+}
+
+.orion-list li:first-child {
+	border: none;
+	padding-top: 0;
+}
+
+.orion-list .button {
+	float: right;
+}
+
+#orion-world .welcome-panel-last {
+	min-height: 250px;
+}
+
+.orion-weather-icon {
+	position: absolute;
+}
+
+.orion-weather-icon > li[class^="icon-"] {
+	font-size: 150px;
+}
+
+.orion-weather-icon > .icon-sunrise,
+.orion-weather-icon > .icon-sun,
+.orion-weather-icon > .icon-sunny {
+	color: #FFA500;
+}
+
+.orion-weather-icon > .icon-sunset {
+	color: #F96F23;
+}
+
+.orion-weather-icon > .icon-moon {
+	color: #666;
+}
+
+.orion-weather-icon > .icon-cloud {
+	position: absolute;
+	font-family: 'iconvault';
+	color: #ccc;
+}
+
+.orion-weather-icon > .icon-cloud + [class^="icon-"] {
+	font-size: 150px;
+}
+
+.orion-weather-icon > .icon-cloud + [class^="icon-"]::after,
+.orion-weather-icon > .icon-cloud + [class^="icon-"]::before {
+	font-family: 'iconvault';
+	position: absolute;
+
+}
+
+.orion-weather-icon > .icon-cloud + [class^="icon-"]::after {
+ 	top: 60px;
+}
+
+.orion-weather-icon > .icon-cloud + .icon-night::after {
+	content: "\f100";
+	color: #666;
+}
+
+.orion-weather-icon > .icon-cloud + .icon-sunny::after {
+	content: "\f101";
+}
+
+.orion-weather-icon > .icon-cloud + .icon-drizzle::before {
+	content: "\f10a";
+	color: #82B2E4;
+}
+
+.orion-weather-icon > .icon-cloud + .icon-thunder::before {
+	color: #FFA500;
+}
+
+.orion-graph {
+	float: left;
+}
+
+.orion-fraction {
+	display: inline-block;
+	text-align: center;
+	font-variant: small-caps;
+	float: left;
+	padding: 50px 20px;
+}
+
+.orion-fraction > div:first-child {
+	display: block;
+	border-bottom: 1px solid #ddd;
+	font-size: 1.5em;
+	font-weight: bold;
+	padding-bottom: 8px;
+}
+
+.orion-fraction > div:last-child {
+	padding: 4px 0;
+}
+
+.orion-list > li > span {
+	float: right;
+}
+
+.orion-list li span .button {
+	float: left;
+}
+
+#orion-layout .welcome-panel-close .dashicons::before {
+	position: absolute;
+	left: -4px;
+	margin-top: -4px;
+	-webkit-transition: all .1s ease-in-out;
+	transition: all .1s ease-in-out;
+}
+
+.orion-player-avatar {
+	float: left;
+	width: 48px;
+	margin-top: 21px;
+	padding-right: 1em;
+}
+
+.orion-list .orion-player-avatar {
+	margin: 0;
+	width: 28px;
+	height: auto;
+	padding-right: .5em;
+}
+
+.orion-player-details {
+	margin-top: 21px;
+	float: left;
+}
+
+.orion-player-details .about-description {
+	color: #777;
+}
+
+#orion-kick-player-button {
+	margin-right: 4px;
+}
+
+.orion-page-title a {
+	color: #222;
+	text-decoration: none;
+}
+
+.orion-page-title a:hover,
+.orion-page-title a:focus {
+	color: #2EA2CC;
+}
+
+.orion-no-players {
+	color: #777;
+	font-size: 16px;
+	margin: 0;
+}
+
+.orion-postbox-container {
+	width: 49.5%;
+	float: left;
+}
+
+.orion-postbox-container + .orion-postbox-container {
+	margin-left: 1%;
+}
+
+.postbox h3 {
+	font-size: 14px;
+	padding: 8px 12px;
+	margin: 0px;
+	line-height: 1.4;
+}
+
+.orion-inline-form {
+	display: block;
+}
+
+.orion-inline-form label {
+	float: left;
+}
+
+.orion-inline-form input,
+.orion-inline-form select,
+.orion-inline-form textarea {
+	float: right;
+}
+
+@media screen and (max-width: 782px) {
+	.orion-postbox-container {
+		display: block;
+		width: 100%;
+		float: none;
+	}
+
+	.orion-postbox-container + .orion-postbox-container {
+		margin-left: 0;
+	}
+
+	.orion-list li {
+		line-height: 34px !important;
+	}
+
+	#orion-layout .welcome-panel-close .dashicons:before {
+		left: -18px;
+	}
+
+	.welcome-panel .welcome-panel-column {
+		display: block;
+		width: 100%;
+		float: left;
+	}
+
+	.welcome-panel .welcome-panel-column li {
+		display: block;
+	}
+
+	.orion-inline-form label,
+	.orion-inline-form input,
+	.orion-inline-form select,
+	.orion-inline-form textarea {
+		float: none;
+		display: block;
+	}
+
+	.orion-list .orion-player-avatar {
+		width: 34px;
+	}
+}

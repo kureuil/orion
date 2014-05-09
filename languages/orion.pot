@@ -1,0 +1,252 @@
+# Copyright (C) 2014 Orion
+# This file is distributed under the same license as the Orion package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Orion 1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/orion\n"
+"POT-Creation-Date: 2014-05-09 11:07:31+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: admin/class-orion-admin.php:163 admin/views/dashboard.php:33
+#: admin/views/dashboard.php:164
+msgid "Settings"
+msgstr ""
+
+#: admin/includes/class-orion-api.php:157
+#: admin/includes/class-orion-api.php:214
+msgid "You've been banned."
+msgstr ""
+
+#: admin/includes/class-orion-api.php:231
+msgid "You've been kicked."
+msgstr ""
+
+#: admin/includes/class-orion-dashboard-screen.php:22
+#: admin/includes/class-orion-dashboard-screen.php:23
+msgid "Server Dashboard"
+msgstr ""
+
+#: admin/includes/class-orion-settings-screen.php:45
+msgid "JSONAPI Credentials"
+msgstr ""
+
+#: admin/includes/class-orion-settings-screen.php:52
+msgid "Server IP"
+msgstr ""
+
+#: admin/includes/class-orion-settings-screen.php:62
+msgid "JSONAPI port"
+msgstr ""
+
+#: admin/includes/class-orion-settings-screen.php:72
+msgid "JSONAPI username"
+msgstr ""
+
+#: admin/includes/class-orion-settings-screen.php:82
+msgid "JSONAPI password"
+msgstr ""
+
+#: admin/includes/class-orion-settings-screen.php:100
+msgid "Orion Settings"
+msgstr ""
+
+#. #-#-#-#-#  orion.pot (Orion 1.0.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: admin/includes/class-orion-settings-screen.php:101
+msgid "Orion"
+msgstr ""
+
+#: admin/views/dashboard.php:36
+msgid "Running <%= version %> with <%= plugins_count %> plugins"
+msgstr ""
+
+#: admin/views/dashboard.php:39
+msgid "Loaded Worlds"
+msgstr ""
+
+#: admin/views/dashboard.php:47
+msgid "Memory Usage"
+msgstr ""
+
+#: admin/views/dashboard.php:55 admin/views/dashboard.php:190
+msgid "Connected players"
+msgstr ""
+
+#: admin/views/dashboard.php:69
+msgid "Connected Players"
+msgstr ""
+
+#: admin/views/dashboard.php:72
+msgid "Well, actually there is nobody on your server."
+msgstr ""
+
+#: admin/views/dashboard.php:75
+msgid "Filter by name"
+msgstr ""
+
+#: admin/views/dashboard.php:87
+msgid "Manage Player"
+msgstr ""
+
+#: admin/views/dashboard.php:98
+msgid "Offline"
+msgstr ""
+
+#: admin/views/dashboard.php:98
+msgid "Connected from <%= ip %>"
+msgstr ""
+
+#: admin/views/dashboard.php:102
+msgid "Stats"
+msgstr ""
+
+#: admin/views/dashboard.php:104
+msgid "Health"
+msgstr ""
+
+#: admin/views/dashboard.php:105
+msgid "Food level"
+msgstr ""
+
+#: admin/views/dashboard.php:106
+msgid "XP level"
+msgstr ""
+
+#: admin/views/dashboard.php:108
+msgid "Balance"
+msgstr ""
+
+#: admin/views/dashboard.php:113
+msgid "Miscellaneous"
+msgstr ""
+
+#: admin/views/dashboard.php:115
+msgid "Gamemode"
+msgstr ""
+
+#: admin/views/dashboard.php:118 admin/views/dashboard.php:173
+msgid "Normal"
+msgstr ""
+
+#: admin/views/dashboard.php:119
+msgid "Creative"
+msgstr ""
+
+#: admin/views/dashboard.php:123
+msgid "OP:"
+msgstr ""
+
+#: admin/views/dashboard.php:124 admin/views/dashboard.php:132
+#: admin/views/dashboard.php:140 admin/views/dashboard.php:181
+msgid "Yes"
+msgstr ""
+
+#: admin/views/dashboard.php:124 admin/views/dashboard.php:132
+#: admin/views/dashboard.php:140 admin/views/dashboard.php:182
+msgid "No"
+msgstr ""
+
+#: admin/views/dashboard.php:127
+msgid "De-OP"
+msgstr ""
+
+#: admin/views/dashboard.php:127
+msgid "OP"
+msgstr ""
+
+#: admin/views/dashboard.php:131
+msgid "Whitelisted:"
+msgstr ""
+
+#: admin/views/dashboard.php:135
+msgid "Remove"
+msgstr ""
+
+#: admin/views/dashboard.php:135
+msgid "Add"
+msgstr ""
+
+#: admin/views/dashboard.php:139
+msgid "Banned:"
+msgstr ""
+
+#: admin/views/dashboard.php:143
+msgid "Kick"
+msgstr ""
+
+#: admin/views/dashboard.php:146
+msgid "Un-ban"
+msgstr ""
+
+#: admin/views/dashboard.php:146
+msgid "Ban"
+msgstr ""
+
+#: admin/views/dashboard.php:168
+msgid "Difficulty"
+msgstr ""
+
+#: admin/views/dashboard.php:171
+msgid "Easy"
+msgstr ""
+
+#: admin/views/dashboard.php:172
+msgid "Hard"
+msgstr ""
+
+#: admin/views/dashboard.php:174
+msgid "Peaceful"
+msgstr ""
+
+#: admin/views/dashboard.php:179
+msgid "Enable PvP"
+msgstr ""
+
+#: admin/views/dashboard.php:185
+msgid "Save"
+msgstr ""
+
+#: admin/views/dashboard.php:193
+msgid "Weather"
+msgstr ""
+
+#: admin/views/dashboard.php:218
+msgid "An error occured. Please try again later."
+msgstr ""
+
+#: admin/views/dashboard.php:224
+msgid "We couldn't establish a connection with your server."
+msgstr ""
+
+#: admin/views/dashboard.php:225
+msgid "Please check your credentials and your server."
+msgstr ""
+
+#: admin/views/dashboard.php:230
+msgid "Are you sure you want to ban <%= name %> ?"
+msgstr ""
+
+#: admin/views/dashboard.php:234
+msgid "Please specify a reason for this ban:"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "@TODO"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Administrate your Minecraft server from your WordPress dashboard"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "seishynon"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "sshnn@outlook.com"
+msgstr ""
