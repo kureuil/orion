@@ -1,5 +1,9 @@
 /* This stylesheet is used to style the admin option form of the plugin. */
-.orion-list {
+.button + .button {
+	margin-left: 4px;
+}
+
+.welcome-panel-column .orion-list {
 	max-height: 200px;
 	overflow: auto;
 	overflow-x: hidden;
@@ -199,6 +203,24 @@
 	float: right;
 }
 
+.welcome-panel-content-whitelist {
+	margin-bottom: 1em;
+}
+
+.welcome-panel-content-whitelist > h3{
+	float: left;
+	font-size: 18px;
+}
+
+.welcome-panel-content-whitelist > form {
+	float: right;
+}
+
+.welcome-panel-content-whitelist > form > input {
+	margin-top: 0;
+	height: 28px;
+}
+
 @media screen and (max-width: 782px) {
 	.orion-postbox-container {
 		display: block;
@@ -238,5 +260,22 @@
 
 	.orion-list .orion-player-avatar {
 		width: 34px;
+	}
+
+	.welcome-panel-content-whitelist > h3,
+	.welcome-panel-content-whitelist > form {
+		float: none;
+	}
+
+	.welcome-panel-content-whitelist > form {
+		padding-top: 1em;
+	}
+
+	.welcome-panel-content-whitelist > form > input {
+		height: 36px;
+	}
+
+	.welcome-panel-content-whitelist > form > .button {
+		margin-top: -2px;
 	}
 }

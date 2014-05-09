@@ -30,7 +30,7 @@
 
 <script type="text/template" id="orion-dash-server-status-template">
 	<div class="welcome-panel">
-		<a class="welcome-panel-close" href="#"><span class="dashicons dashicons-admin-settings"></span><?=__( 'Settings', 'orion' )?></a>
+		<a class="welcome-panel-close" href="#manage-server"><span class="dashicons dashicons-admin-settings"></span><?=__( 'Settings', 'orion' )?></a>
 		<div class="welcome-panel-content">
 			<h3><%= name %></h3>
 			<p class="about-description"><?=__( 'Running <%= version %> with <%= plugins_count %> plugins', 'orion' )?></p>
@@ -152,6 +152,75 @@
 			</div>
 		</div>
 	</div>
+</script>
+
+<script type="text/template" id="orion-server-config-template">
+	<h2 class="nav-tab-wrapper">
+		<a href="#manage-server/config" class="nav-tab nav-tab-active">Configuration</a>
+		<a href="#manage-server/whitelist" class="nav-tab">Whitelist</a>
+		<a href="#manage-server/blacklist" class="nav-tab">Blacklist</a>
+		<a href="#manage-server/plugins" class="nav-tab">Plugins</a>
+	</h2>
+</script>
+
+<script type="text/template" id="orion-server-whitelist-template">
+	<h2 class="nav-tab-wrapper">
+		<a href="#manage-server/config" class="nav-tab">Configuration</a>
+		<a href="#manage-server/whitelist" class="nav-tab nav-tab-active">Whitelist</a>
+		<a href="#manage-server/blacklist" class="nav-tab">Blacklist</a>
+		<a href="#manage-server/plugins" class="nav-tab">Plugins</a>
+	</h2>
+
+	<div class="welcome-panel">
+		<div class="welcome-panel-content welcome-panel-content-whitelist">
+			<h3><?=__( 'Add a player to the whitelist', 'orion' )?></h3>
+			<form id="orion-whitelist-form">
+				<input type="text" name="orion-player-name" id="orion-player-name">
+				<button type="submit" class="button button-primary"><?=__( 'Add', 'orion' )?></button>
+			</form>
+			<br class="clear">
+		</div>
+	</div>
+
+	<form class="orion-inline-form">
+		<label for="orion-player-name-filter"><?=__( 'Filter by name', 'orion' )?></label>
+		<input type="text" name="orion-player-name-filter" id="orion-player-name-filter">
+		<br class="clear">
+	</form>
+
+	<div class="welcome-panel">
+		<div class="welcome-panel-content welcome-panel-content-whitelist">
+			<ul class="orion-list orion-list-players"></ul>
+		</div>
+	</div>
+</script>
+
+<script type="text/javascript" id="orion-players-whitelist-item-template">
+	<li><img class="orion-player-avatar" src="https://minotar.net/avatar/<%= player_name %>/34"/><%= player_name %><span><a href="#player/<%= player_name %>" class="button"><?=__( 'Manage Player', 'orion' )?></a><button class="button unwhitelist" data-name="<%= player_name %>"><?=__( 'Remove', 'orion' )?></button></span></li>
+</script>
+
+<script type="text/template" id="orion-player-already-whitelisted-template">
+	<div class="error">
+		<p><?=__( '<strong>Error:</strong> the player <%= player_name %> is already whitelisted.', 'orion' )?></p>
+	</div>
+</script>
+
+<script type="text/template" id="orion-server-blacklist-template">
+	<h2 class="nav-tab-wrapper">
+		<a href="#manage-server/config" class="nav-tab">Configuration</a>
+		<a href="#manage-server/whitelist" class="nav-tab">Whitelist</a>
+		<a href="#manage-server/blacklist" class="nav-tab nav-tab-active">Blacklist</a>
+		<a href="#manage-server/plugins" class="nav-tab">Plugins</a>
+	</h2>
+</script>
+
+<script type="text/template" id="orion-server-plugins-template">
+	<h2 class="nav-tab-wrapper">
+		<a href="#manage-server/config" class="nav-tab">Configuration</a>
+		<a href="#manage-server/whitelist" class="nav-tab">Whitelist</a>
+		<a href="#manage-server/blacklist" class="nav-tab">Blacklist</a>
+		<a href="#manage-server/plugins" class="nav-tab nav-tab-active">Plugins</a>
+	</h2>
 </script>
 
 <script type="text/template" id="orion-world-template">

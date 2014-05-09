@@ -51,11 +51,9 @@ class Orion_API {
 		$this->endpoints = array(
 			'get_server',
 			'get_player',
+			'get_whitelisted_players',
 			'update_player_gamemode',
 			'toggle_player_it',
-			'toggle_player_op',
-			'toggle_player_whitelist',
-			'toggle_player_ban',
 			'send_message',
 			'kick_player'
 		);
@@ -75,10 +73,6 @@ class Orion_API {
 			}
 		}
 		return $this->api->call($method, $args);
-	}
-
-	private function return_response() {
-		wp_send_json( array( $this->response ) );
 	}
 	
 	public function get_server() {
@@ -130,6 +124,11 @@ class Orion_API {
 		wp_send_json( $this->response );
 	}
 
+	public function get_whitelisted_players() {
+		$this->response = $this->call( 'players.whitelisted.names' );
+		wp_send_json( $this->response[0][$this->response[0]['result']] );
+	}
+
 	public function update_player_gamemode() {
 		$player_name = sanitize_text_field( $_POST['player_name'] );
 		$gamemode_id = intval( $_POST['gamemode_id'] );
@@ -143,12 +142,13 @@ class Orion_API {
 
 	public function toggle_player_it() {
 		$player_name = sanitize_text_field( $_POST['player_name'] );
-		$toggle = sanitize_text_field( $_POST['toggle'] );
+		$toggle      = sanitize_text_field( $_POST['toggle'] );
+
 		$is_it = ( $_POST['is_it'] === 'true' );
 		$is_it = is_bool($is_it) ? $is_it : false;
 
 		$method = '';
-		$args = array( $player_name );
+		$args   = array( $player_name );
 
 		switch ($toggle) {
 			case 'ban':
@@ -169,55 +169,7 @@ class Orion_API {
 
 		$this->request = $this->call( 'players.name.' . $method, $args );
 
-		( $this->request[0]['is_success'] ) ? wp_send_json_success() : wp_send_json_error();
-	}
-
-	public function toggle_player_op() {
-		$player_name = sanitize_text_field( $_POST['player_name'] );
-		$is_op = ( $_POST['is_op'] === 'true' );
-		$is_op = is_bool($is_op) ? $is_op : false;
-		if ( $is_op ) {
-			$this->request = $this->call( 'players.name.deop', array( $player_name ) );
-		} else {
-			$this->request = $this->call( 'players.name.op', array( $player_name ) );
-		}
-		if ( $this->request[0]['is_success'] ) {
-			wp_send_json( array( 'is_success' => true ) );
-		} else {
-			wp_send_json( array( 'is_success' => false ) );
-		}
-	}
-
-	public function toggle_player_whitelist() {
-		$player_name = sanitize_text_field( $_POST['player_name'] );
-		$is_whitelisted = ( $_POST['is_whitelisted'] === 'true' );
-		$is_whitelisted = is_bool($is_whitelisted) ? $is_whitelisted : false;
-		if ( $is_whitelisted ) {
-			$this->request = $this->call( 'players.name.unwhitelist', array( $player_name ) );
-		} else {
-			$this->request = $this->call( 'players.name.whitelist', array( $player_name ) );
-		}
-		if ( $this->request[0]['is_success'] ) {
-			wp_send_json( array( 'is_success' => true ) );
-		} else {
-			wp_send_json( array( 'is_success' => false ) );
-		}
-	}
-
-	public function toggle_player_ban() {
-		$player_name = sanitize_text_field( $_POST['player_name'] );
-		$is_banned = ( $_POST['is_banned'] === 'true' );
-		$is_banned = is_bool($is_banned) ? $is_banned : false;
-		if ( $is_banned ) {
-			$this->request = $this->call( 'players.name.pardon', array( $player_name ) );
-		} else {
-			$this->request = $this->call( 'players.name.ban', array( $player_name, __( 'You\'ve been banned.', 'orion' ) ) );
-		}
-		if ( $this->request[0]['is_success'] ) {
-			wp_send_json( array( 'is_success' => true ) );
-		} else {
-			wp_send_json( array( 'is_success' => false ) );
-		}
+		( !$this->request[0]['is_success'] ) ? wp_send_json_success() : wp_send_json_error(['player' => $player_name]);
 	}
 
 	public function send_message() {
