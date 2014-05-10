@@ -52,6 +52,7 @@ class Orion_API {
 			'get_server',
 			'get_player',
 			'get_whitelisted_players',
+			'get_blacklisted_players',
 			'update_player_gamemode',
 			'toggle_player_it',
 			'send_message',
@@ -129,6 +130,11 @@ class Orion_API {
 		wp_send_json( $this->response[0][$this->response[0]['result']] );
 	}
 
+	public function get_blacklisted_players() {
+		$this->response = $this->call( 'players.banned.names' );
+		wp_send_json( $this->response[0][$this->response[0]['result']] );
+	}
+
 	public function update_player_gamemode() {
 		$player_name = sanitize_text_field( $_POST['player_name'] );
 		$gamemode_id = intval( $_POST['gamemode_id'] );
@@ -169,7 +175,7 @@ class Orion_API {
 
 		$this->request = $this->call( 'players.name.' . $method, $args );
 
-		( !$this->request[0]['is_success'] ) ? wp_send_json_success() : wp_send_json_error(['player' => $player_name]);
+		( $this->request[0]['is_success'] ) ? wp_send_json_success() : wp_send_json_error(['player' => $player_name]);
 	}
 
 	public function send_message() {

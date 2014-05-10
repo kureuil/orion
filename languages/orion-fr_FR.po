@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orion 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/orion\n"
-"POT-Creation-Date: 2014-05-09 23:48:49+00:00\n"
-"PO-Revision-Date: 2014-05-10 01:49+0100\n"
+"POT-Creation-Date: 2014-05-10 08:25:38+00:00\n"
+"PO-Revision-Date: 2014-05-10 10:27+0100\n"
 "Last-Translator: seishynon <sshnn@outlook.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -14,15 +14,15 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 
 #: admin/class-orion-admin.php:163 admin/views/dashboard.php:33
-#: admin/views/dashboard.php:233
+#: admin/views/dashboard.php:266
 msgid "Settings"
 msgstr "Réglages"
 
-#: admin/includes/class-orion-api.php:157
+#: admin/includes/class-orion-api.php:163
 msgid "You've been banned."
 msgstr "Vous avez été banni."
 
-#: admin/includes/class-orion-api.php:183
+#: admin/includes/class-orion-api.php:189
 msgid "You've been kicked."
 msgstr "Vous avez été kick."
 
@@ -73,7 +73,7 @@ msgstr "Mondes chargés"
 msgid "Memory Usage"
 msgstr "Utilisation mémoire"
 
-#: admin/views/dashboard.php:55 admin/views/dashboard.php:259
+#: admin/views/dashboard.php:55 admin/views/dashboard.php:292
 msgid "Connected players"
 msgstr "Joueurs connectés"
 
@@ -86,10 +86,12 @@ msgid "Well, actually there is nobody on your server."
 msgstr "Il n'y aucun joueur connecté sur votre serveur."
 
 #: admin/views/dashboard.php:75 admin/views/dashboard.php:186
+#: admin/views/dashboard.php:228
 msgid "Filter by name"
 msgstr "Filtrer par pseudonyme"
 
 #: admin/views/dashboard.php:87 admin/views/dashboard.php:199
+#: admin/views/dashboard.php:241
 msgid "Manage Player"
 msgstr "Gérer le joueur"
 
@@ -129,7 +131,7 @@ msgstr "Autres"
 msgid "Gamemode"
 msgstr "Mode de jeu"
 
-#: admin/views/dashboard.php:118 admin/views/dashboard.php:242
+#: admin/views/dashboard.php:118 admin/views/dashboard.php:275
 msgid "Normal"
 msgstr "Normal"
 
@@ -142,12 +144,12 @@ msgid "OP:"
 msgstr "OP:"
 
 #: admin/views/dashboard.php:124 admin/views/dashboard.php:132
-#: admin/views/dashboard.php:140 admin/views/dashboard.php:250
+#: admin/views/dashboard.php:140 admin/views/dashboard.php:283
 msgid "Yes"
 msgstr "Oui"
 
 #: admin/views/dashboard.php:124 admin/views/dashboard.php:132
-#: admin/views/dashboard.php:140 admin/views/dashboard.php:251
+#: admin/views/dashboard.php:140 admin/views/dashboard.php:284
 msgid "No"
 msgstr "No"
 
@@ -164,6 +166,7 @@ msgid "Whitelisted:"
 msgstr "Whitelisté :"
 
 #: admin/views/dashboard.php:135 admin/views/dashboard.php:199
+#: admin/views/dashboard.php:241
 msgid "Remove"
 msgstr "Retirer"
 
@@ -183,9 +186,29 @@ msgstr "Kick"
 msgid "Un-ban"
 msgstr "Pardonner"
 
-#: admin/views/dashboard.php:146
+#: admin/views/dashboard.php:146 admin/views/dashboard.php:221
 msgid "Ban"
 msgstr "Bannir"
+
+#: admin/views/dashboard.php:159 admin/views/dashboard.php:168
+#: admin/views/dashboard.php:210 admin/views/dashboard.php:252
+msgid "Server Settings"
+msgstr "Réglages du serveur"
+
+#: admin/views/dashboard.php:160 admin/views/dashboard.php:169
+#: admin/views/dashboard.php:211 admin/views/dashboard.php:253
+msgid "Whitelist"
+msgstr "Liste blanche"
+
+#: admin/views/dashboard.php:161 admin/views/dashboard.php:170
+#: admin/views/dashboard.php:212 admin/views/dashboard.php:254
+msgid "Blacklist"
+msgstr "Liste noire"
+
+#: admin/views/dashboard.php:162 admin/views/dashboard.php:171
+#: admin/views/dashboard.php:213 admin/views/dashboard.php:255
+msgid "Plugins"
+msgstr "Plugins"
 
 #: admin/views/dashboard.php:176
 msgid "Add a player to the whitelist"
@@ -198,51 +221,62 @@ msgstr ""
 "<strong>Erreur :</strong> le joueur <%= player_name %> est déjà ajouté à la "
 "whitelist."
 
-#: admin/views/dashboard.php:237
+#: admin/views/dashboard.php:218
+msgid "Ban a player"
+msgstr "Bannir un joueur"
+
+#: admin/views/dashboard.php:246
+msgid ""
+"<strong>Error:</strong> the player <%= player_name %> has already been "
+"banned."
+msgstr ""
+"<strong>Erreur :</strong> le joueur <%= player_name %> a déjà été banni."
+
+#: admin/views/dashboard.php:270
 msgid "Difficulty"
 msgstr "Difficulté"
 
-#: admin/views/dashboard.php:240
+#: admin/views/dashboard.php:273
 msgid "Easy"
 msgstr "Facile"
 
-#: admin/views/dashboard.php:241
+#: admin/views/dashboard.php:274
 msgid "Hard"
 msgstr "Difficile"
 
-#: admin/views/dashboard.php:243
+#: admin/views/dashboard.php:276
 msgid "Peaceful"
 msgstr "Paisible"
 
-#: admin/views/dashboard.php:248
+#: admin/views/dashboard.php:281
 msgid "Enable PvP"
 msgstr "Activer le PvP"
 
-#: admin/views/dashboard.php:254
+#: admin/views/dashboard.php:287
 msgid "Save"
 msgstr "Sauvegarder"
 
-#: admin/views/dashboard.php:262
+#: admin/views/dashboard.php:295
 msgid "Weather"
 msgstr "Météo"
 
-#: admin/views/dashboard.php:287
+#: admin/views/dashboard.php:320
 msgid "An error occured. Please try again later."
 msgstr "Une erreur est survenue. Merci de réessayer plus tard."
 
-#: admin/views/dashboard.php:293
+#: admin/views/dashboard.php:326
 msgid "We couldn't establish a connection with your server."
 msgstr "Nous n'avons pas pu établir de connection avec votre serveur."
 
-#: admin/views/dashboard.php:294
+#: admin/views/dashboard.php:327
 msgid "Please check your credentials and your server."
 msgstr "Vérifiez les identifiants utilisés pour la connexion."
 
-#: admin/views/dashboard.php:299
+#: admin/views/dashboard.php:332
 msgid "Are you sure you want to ban <%= name %> ?"
 msgstr "Êtes-vous sûr de vouloir bannir <%= name %> ?"
 
-#: admin/views/dashboard.php:303
+#: admin/views/dashboard.php:336
 msgid "Please specify a reason for this ban:"
 msgstr "Spécifiez une raison pour le bannissement :"
 

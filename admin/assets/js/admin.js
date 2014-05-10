@@ -81,16 +81,16 @@ var orion = orion || {};
 		},
 		manageServerBlacklist: function() {
 			var self = this;
-			var serverModel;
+			var playersList;
 			$.post(
 				orion_data.ajax_url,
-				{action: 'orion_get_server'},
+				{action: 'orion_get_blacklisted_players'},
 				function(response) {
-					serverModel = new orion.Server(response);
+					playersList = response;
 				}
 			).then(function() {
 				self.layout.renderView(new orion.ServerBlacklistView({
-					model: serverModel
+					model: playersList
 				}));
 			});
 		},
@@ -292,7 +292,7 @@ var orion = orion || {};
 		},
 		remove: function() {
 			this.model.off('change', this.render);
-			clearInterval(this.serverInterval);
+			clearInterval(this.playerInterval);
 			return this;
 		},
 		updatePlayer: function(self) {
@@ -503,11 +503,95 @@ var orion = orion || {};
 	orion.ServerBlacklistView = Backbone.View.extend({
 		id: 'orion-server-blacklist',
 		template: _.template($('#orion-server-blacklist-template').html()),
+		events: {
+			'keyup #orion-player-name-filter': 'filterList',
+			'submit #orion-blacklist-form': 'addPlayer',
+			'click .pardon': 'removePlayer'
+		},
 		initialize: function() {
 			return this;
 		},
 		render: function() {
 			this.$el.html(this.template(this.model.attributes));
+			this.renderList();
+			return this;
+		},
+		renderList: function() {
+			var listHtml = '';
+			var filter = this.filter;
+			console.log('filter' + filter)
+			_.each(this.model, function(value) {
+				if(
+					(filter === undefined) ||
+					(filter === '') ||
+					(value.toLowerCase().indexOf(filter) !== -1)
+				) {
+					listHtml += _.template($('#orion-players-blacklist-item-template').html())({ player_name: value });
+				}
+			});
+			this.$('.orion-list-players').html(listHtml);
+			return this;
+		},
+		filterList: function(e) {
+			this.filter = ($(e.target).val() === undefined) ? '': $(e.target).val().toLowerCase();
+			return this.renderList();
+		},
+		addPlayer: function(e) {
+			e.preventDefault();
+			var player_name = (this.$('#orion-player-name').val() === undefined) ? '': this.$('#orion-player-name').val();
+			if(player_name === '') {
+				return this;
+			} else if(this.model.indexOf(player_name) !== -1) {
+				this.$el.prepend(_.template($('#orion-player-already-blacklisted-template').html())({player_name: player_name}));
+				this.$('#orion-player-name').val(null);
+				return this;
+			} else {
+				var self = this;
+				$.post(
+					orion_data.ajax_url,
+					{
+						action: 'orion_toggle_player_it',
+						player_name: player_name,
+						toggle: 'ban',
+						is_it: false
+					},
+					function(response) {
+						if(!response.success) {
+							console.log(response)
+							self.$el.prepend($('#orion-request-failed-template').html());
+						} else {
+							self.model.unshift(player_name);
+							self.$('#orion-player-name').val(null);
+							self.renderList();
+						}
+					}
+				)
+			}
+			return this;
+		},
+		removePlayer: function(e) {
+			e.preventDefault();
+			var self = this;
+			var player_name = $(e.target).data('name');
+			$.post(
+				orion_data.ajax_url,
+				{
+					action: 'orion_toggle_player_it',
+					player_name: player_name,
+					toggle: 'ban',
+					is_it: true
+				},
+				function(response) {
+					if(!response.success) {
+						console.log(response)
+						self.$el.prepend($('#orion-request-failed-template').html());
+					} else {
+						// Delete the player from the blacklist array
+						self.model.splice(self.model.indexOf(player_name), 1);
+						self.renderList();
+					}
+				}
+			);
 			return this;
 		}
 	});

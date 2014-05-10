@@ -3,6 +3,10 @@
 	margin-left: 4px;
 }
 
+.wp-core-ui .button-group > .button + .button {
+	margin-left: 0;
+}
+
 .welcome-panel-column .orion-list {
 	max-height: 200px;
 	overflow: auto;
@@ -203,20 +207,24 @@
 	float: right;
 }
 
-.welcome-panel-content-whitelist {
+.welcome-panel-content-whitelist,
+.welcome-panel-content-blacklist {
 	margin-bottom: 1em;
 }
 
-.welcome-panel-content-whitelist > h3{
+.welcome-panel-content-whitelist > h3,
+.welcome-panel-content-blacklist > h3 {
 	float: left;
 	font-size: 18px;
 }
 
-.welcome-panel-content-whitelist > form {
+.welcome-panel-content-whitelist > form,
+.welcome-panel-content-blacklist > form {
 	float: right;
 }
 
-.welcome-panel-content-whitelist > form > input {
+.welcome-panel-content-whitelist > form > input,
+.welcome-panel-content-blacklist > form > input {
 	margin-top: 0;
 	height: 28px;
 }
@@ -263,19 +271,24 @@
 	}
 
 	.welcome-panel-content-whitelist > h3,
-	.welcome-panel-content-whitelist > form {
+	.welcome-panel-content-whitelist > form,
+	.welcome-panel-content-blacklist > h3,
+	.welcome-panel-content-blacklist > form {
 		float: none;
 	}
 
-	.welcome-panel-content-whitelist > form {
+	.welcome-panel-content-whitelist > form,
+	.welcome-panel-content-blacklist > form {
 		padding-top: 1em;
 	}
 
-	.welcome-panel-content-whitelist > form > input {
+	.welcome-panel-content-whitelist > form > input,
+	.welcome-panel-content-blacklist > form > input {
 		height: 36px;
 	}
 
-	.welcome-panel-content-whitelist > form > .button {
+	.welcome-panel-content-whitelist > form > .button,
+	.welcome-panel-content-blacklist > form > .button {
 		margin-top: -2px;
 	}
 }
