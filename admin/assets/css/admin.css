@@ -13,20 +13,36 @@
 	overflow-x: hidden;
 }
 
-.orion-list li {
+.orion-list > li {
 	line-height: 28px !important;
 	border-top: 1px solid #eee;
 	padding-top: 6px;
 	padding-right: 6px;
 }
 
-.orion-list li:first-child {
+.orion-list > li:first-child {
 	border: none;
 	padding-top: 0;
 }
 
 .orion-list .button {
 	float: right;
+}
+
+.orion-inline-list {
+	list-style: none;
+}
+
+.orion-inline-list > li {
+	display: inline;
+}
+
+.orion-inline-list-separator > li::after {
+	content: " | ";
+}
+
+.orion-inline-list-separator > li:last-child::after {
+	content: "";
 }
 
 #orion-world .welcome-panel-last {
@@ -207,26 +223,57 @@
 	float: right;
 }
 
-.welcome-panel-content-whitelist,
-.welcome-panel-content-blacklist {
+.welcome-panel-content-form {
 	margin-bottom: 1em;
 }
 
-.welcome-panel-content-whitelist > h3,
-.welcome-panel-content-blacklist > h3 {
+.welcome-panel-content-form > h3 {
 	float: left;
 	font-size: 18px;
 }
 
-.welcome-panel-content-whitelist > form,
-.welcome-panel-content-blacklist > form {
+.welcome-panel-content-form > form {
 	float: right;
 }
 
-.welcome-panel-content-whitelist > form > input,
-.welcome-panel-content-blacklist > form > input {
+.welcome-panel-content-form > form > input {
 	margin-top: 0;
 	height: 28px;
+}
+
+.orion-list-plugins > li > p {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.orion-list-plugins > li > .orion-inline-list > li {
+	color: #777;
+	font-size: 13px;
+}
+
+.button.orion-commands-close {
+	padding-left: 3px;
+	padding-right: 3px;
+	line-height: 20px !important;
+	margin-top: 7px;
+}
+
+.orion-command-usage {
+	color: #666;
+	font-style: italic;
+	float: none !important;
+	display: block;
+	margin-top: -10px;
+}
+
+.orion-command-usage + p {
+	margin-top: .3em;
+	font-size: 14px;
+	color: #666 !important;
+}
+
+.orion-list-commands {
+	margin-left: 40px;
 }
 
 @media screen and (max-width: 782px) {
@@ -270,25 +317,24 @@
 		width: 34px;
 	}
 
-	.welcome-panel-content-whitelist > h3,
-	.welcome-panel-content-whitelist > form,
-	.welcome-panel-content-blacklist > h3,
-	.welcome-panel-content-blacklist > form {
+	.welcome-panel-content-form > h3,
+	.welcome-panel-content-form > form {
 		float: none;
 	}
 
-	.welcome-panel-content-whitelist > form,
-	.welcome-panel-content-blacklist > form {
+	.welcome-panel-content-form > form {
 		padding-top: 1em;
 	}
 
-	.welcome-panel-content-whitelist > form > input,
-	.welcome-panel-content-blacklist > form > input {
+	.welcome-panel-content-form > form > input {
 		height: 36px;
 	}
 
-	.welcome-panel-content-whitelist > form > .button,
-	.welcome-panel-content-blacklist > form > .button {
+	.welcome-panel-content-form > form > .button {
 		margin-top: -2px;
+	}
+
+	.orion-list-commands {
+		margin-left: 20px;
 	}
 }

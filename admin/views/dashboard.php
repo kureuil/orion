@@ -172,7 +172,7 @@
 	</h2>
 
 	<div class="welcome-panel">
-		<div class="welcome-panel-content welcome-panel-content-whitelist">
+		<div class="welcome-panel-content welcome-panel-content-form">
 			<h3><?=__( 'Add a player to the whitelist', 'orion' )?></h3>
 			<form id="orion-whitelist-form">
 				<input type="text" name="orion-player-name" id="orion-player-name">
@@ -214,7 +214,7 @@
 	</h2>
 
 	<div class="welcome-panel">
-		<div class="welcome-panel-content welcome-panel-content-blacklist">
+		<div class="welcome-panel-content welcome-panel-content-form">
 			<h3><?=__( 'Ban a player', 'orion' )?></h3>
 			<form id="orion-blacklist-form">
 				<input type="text" name="orion-player-name" id="orion-player-name">
@@ -254,6 +254,71 @@
 		<a href="#manage-server/blacklist" class="nav-tab"><?=__( 'Blacklist', 'orion' )?></a>
 		<a href="#manage-server/plugins" class="nav-tab nav-tab-active"><?=__( 'Plugins', 'orion' )?></a>
 	</h2>
+
+		<div class="welcome-panel">
+		<div class="welcome-panel-content welcome-panel-content-form">
+			<h3><?=__( 'Install a plugin', 'orion' )?></h3>
+			<form id="orion-plugins-form">
+				<label for="orion-plugin-name"><?=__( 'Plugin JAR URL', 'orion' )?></label>
+				<input type="text" name="orion-plugin-name" id="orion-plugin-name">
+				<button type="submit" class="button button-primary" id="orion-plugin-install-submit"><?=__( 'Install', 'orion' )?></button>
+			</form>
+			<br class="clear">
+		</div>
+	</div>
+
+	<form class="orion-inline-form" id="orion-plugin-name-filter-form">
+		<label for="orion-plugin-name-filter"><?=__( 'Filter by name', 'orion' )?></label>
+		<input type="text" name="orion-plugin-name-filter" id="orion-plugin-name-filter">
+		<br class="clear">
+	</form>
+
+	<div class="welcome-panel">
+		<div class="welcome-panel-content">
+			<ul class="orion-list orion-list-plugins"></ul>
+		</div>
+	</div>
+</script>
+
+<script type="text/javascript" id="orion-plugins-item-template">
+	<li>
+		<strong><%= plugin.name %></strong>
+		<span>
+			<button class="button plugin-help" data-name="<%= plugin.name %>"><?=__( 'Show plugin commands', 'orion' )?></button>
+			<% if(plugin.enabled) { %>
+				<button class="button plugin-disable" data-name="<%= plugin.name %>"><?=__( 'Disable', 'orion' )?></button>
+			<% } else { %>
+				<button class="button plugin-enable" data-name="<%= plugin.name %>"><?=__( 'Enable', 'orion' )?></button>
+			<% } %>
+		</span>
+		<p>
+			<%= plugin.description %>
+		</p>
+		<ul class="orion-inline-list orion-inline-list-separator">
+			<li><?=__( 'Version' )?> <%= plugin.version %></li>
+			<li><a href="<%= plugin.website %>" title="<?=__( 'Visit plugin site' )?>" target="_blank"><?=__( 'Visit plugin site' )?></a></li>
+			<li>
+				<% if(plugin.authors.length === 1) { %><?=__( 'Author:', 'orion' )?><% } else { %><?=__( 'Authors:', 'orion' )?><% } %>
+				<% _.each(plugin.authors, function(value, index) { %>
+					<%= value %><%= (index === (plugin.authors.length - 1)) ? '' : ',' %>
+				<% }); %>
+			</li>
+		</ul>
+		<ul class="orion-list orion-list-commands" id="orion-commands-<%= plugin.name %>"></ul>
+	</li>
+</script>
+
+<script type="text/template" id="orion-plugin-command-item-template">
+	<li>
+		<strong>/<%= command.source %></strong><span class="orion-command-usage"><% if(command.usage) { %><?=__('Usage:', 'orion' )?>&nbsp;<%= _.escape(command.usage) %><% } %></span>
+		<p><%= command.description %></p>
+	</li>
+</script>
+
+<script type="text/template" id="orion-plugin-already-installed-template">
+	<div class="error">
+		<p><?=__( '<strong>Error:</strong> the plugin <%= player_name %> is already installed.', 'orion' )?></p>
+	</div>
 </script>
 
 <script type="text/template" id="orion-world-template">

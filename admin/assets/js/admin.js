@@ -10,7 +10,7 @@ var orion = orion || {};
 		},
 		routes: {
 			'': 'home',
-			'player/:player_name': 'player',
+			'player/:playerName': 'player',
 			'manage-server(/config)': 'manageServerConfig',
 			'manage-server/whitelist': 'manageServerWhitelist',
 			'manage-server/blacklist': 'manageServerBlacklist',
@@ -31,14 +31,14 @@ var orion = orion || {};
 				}));
 			});
 		},
-		player: function(player_name) {
+		player: function(playerName) {
 			var self = this;
 			var playerModel;
 			$.post(
 				orion_data.ajax_url,
 				{
 					action: 'orion_get_player',
-					player_name: player_name
+					player_name: playerName
 				},
 				function(response) {
 					playerModel = new orion.Player(response);
@@ -96,16 +96,20 @@ var orion = orion || {};
 		},
 		manageServerPlugins: function() {
 			var self = this;
-			var serverModel;
+			var pluginsList;
 			$.post(
 				orion_data.ajax_url,
-				{action: 'orion_get_server'},
+				{action: 'orion_get_plugins'},
 				function(response) {
-					serverModel = new orion.Server(response);
+					if(response.success){
+						pluginsList = response.data;
+					} else {
+						alert('Error');
+					}
 				}
 			).then(function() {
 				self.layout.renderView(new orion.ServerPluginsView({
-					model: serverModel
+					model: pluginsList
 				}));
 			});
 		}
@@ -248,7 +252,6 @@ var orion = orion || {};
 		renderList: function() {
 			var listHtml = '';
 			var filter = this.filter;
-			console.log('filter' + filter)
 			_.each(this.model.get('players_online_names'), function(value) {
 				if(
 					(filter === undefined) ||
@@ -423,7 +426,6 @@ var orion = orion || {};
 		renderList: function() {
 			var listHtml = '';
 			var filter = this.filter;
-			console.log('filter' + filter)
 			_.each(this.model, function(value) {
 				if(
 					(filter === undefined) ||
@@ -442,11 +444,11 @@ var orion = orion || {};
 		},
 		addPlayer: function(e) {
 			e.preventDefault();
-			var player_name = (this.$('#orion-player-name').val() === undefined) ? '': this.$('#orion-player-name').val();
-			if(player_name === '') {
+			var playerName = (this.$('#orion-player-name').val() === undefined) ? '': this.$('#orion-player-name').val();
+			if(playerName === '') {
 				return this;
-			} else if(this.model.indexOf(player_name) !== -1) {
-				this.$el.prepend(_.template($('#orion-player-already-whitelisted-template').html())({player_name: player_name}));
+			} else if(this.model.indexOf(playerName) !== -1) {
+				this.$el.prepend(_.template($('#orion-player-already-whitelisted-template').html())({player_name: playerName}));
 				this.$('#orion-player-name').val(null);
 				return this;
 			} else {
@@ -455,7 +457,7 @@ var orion = orion || {};
 					orion_data.ajax_url,
 					{
 						action: 'orion_toggle_player_it',
-						player_name: player_name,
+						player_name: playerName,
 						toggle: 'whitelist',
 						is_it: false
 					},
@@ -464,7 +466,7 @@ var orion = orion || {};
 							console.log(response)
 							self.$el.prepend($('#orion-request-failed-template').html());
 						} else {
-							self.model.unshift(player_name);
+							self.model.unshift(playerName);
 							self.$('#orion-player-name').val(null);
 							self.renderList();
 						}
@@ -476,12 +478,12 @@ var orion = orion || {};
 		removePlayer: function(e) {
 			e.preventDefault();
 			var self = this;
-			var player_name = $(e.target).data('name');
+			var playerName = $(e.target).data('name');
 			$.post(
 				orion_data.ajax_url,
 				{
 					action: 'orion_toggle_player_it',
-					player_name: player_name,
+					player_name: playerName,
 					toggle: 'whitelist',
 					is_it: true
 				},
@@ -491,7 +493,7 @@ var orion = orion || {};
 						self.$el.prepend($('#orion-request-failed-template').html());
 					} else {
 						// Delete the player from the whitelist array
-						self.model.splice(self.model.indexOf(player_name), 1);
+						self.model.splice(self.model.indexOf(playerName), 1);
 						self.renderList();
 					}
 				}
@@ -519,7 +521,6 @@ var orion = orion || {};
 		renderList: function() {
 			var listHtml = '';
 			var filter = this.filter;
-			console.log('filter' + filter)
 			_.each(this.model, function(value) {
 				if(
 					(filter === undefined) ||
@@ -538,11 +539,11 @@ var orion = orion || {};
 		},
 		addPlayer: function(e) {
 			e.preventDefault();
-			var player_name = (this.$('#orion-player-name').val() === undefined) ? '': this.$('#orion-player-name').val();
-			if(player_name === '') {
+			var playerName = (this.$('#orion-player-name').val() === undefined) ? '': this.$('#orion-player-name').val();
+			if(playerName === '') {
 				return this;
-			} else if(this.model.indexOf(player_name) !== -1) {
-				this.$el.prepend(_.template($('#orion-player-already-blacklisted-template').html())({player_name: player_name}));
+			} else if(this.model.indexOf(playerName) !== -1) {
+				this.$el.prepend(_.template($('#orion-player-already-blacklisted-template').html())({player_name: playerName}));
 				this.$('#orion-player-name').val(null);
 				return this;
 			} else {
@@ -551,7 +552,7 @@ var orion = orion || {};
 					orion_data.ajax_url,
 					{
 						action: 'orion_toggle_player_it',
-						player_name: player_name,
+						player_name: playerName,
 						toggle: 'ban',
 						is_it: false
 					},
@@ -560,7 +561,7 @@ var orion = orion || {};
 							console.log(response)
 							self.$el.prepend($('#orion-request-failed-template').html());
 						} else {
-							self.model.unshift(player_name);
+							self.model.unshift(playerName);
 							self.$('#orion-player-name').val(null);
 							self.renderList();
 						}
@@ -572,12 +573,12 @@ var orion = orion || {};
 		removePlayer: function(e) {
 			e.preventDefault();
 			var self = this;
-			var player_name = $(e.target).data('name');
+			var playerName = $(e.target).data('name');
 			$.post(
 				orion_data.ajax_url,
 				{
 					action: 'orion_toggle_player_it',
-					player_name: player_name,
+					player_name: playerName,
 					toggle: 'ban',
 					is_it: true
 				},
@@ -587,7 +588,7 @@ var orion = orion || {};
 						self.$el.prepend($('#orion-request-failed-template').html());
 					} else {
 						// Delete the player from the blacklist array
-						self.model.splice(self.model.indexOf(player_name), 1);
+						self.model.splice(self.model.indexOf(playerName), 1);
 						self.renderList();
 					}
 				}
@@ -599,11 +600,174 @@ var orion = orion || {};
 	orion.ServerPluginsView = Backbone.View.extend({
 		id: 'orion-server-plugins',
 		template: _.template($('#orion-server-plugins-template').html()),
+		events: {
+			'keyup #orion-plugin-name-filter': 'filterList',
+			'submit #orion-plugin-name-filter-form': 'filterList',
+			'submit #orion-plugins-form': 'addPlugin',
+			'click .plugin-enable': 'enablePlugin',
+			'click .plugin-disable': 'disablePlugin',
+			'click .plugin-help': 'listPluginCommands',
+			'click .orion-commands-close': 'hidePluginCommands'
+		},
+		filter: '',
 		initialize: function() {
 			return this;
 		},
 		render: function() {
-			this.$el.html(this.template(this.model.attributes));
+			this.$el.html(this.template(this.model));
+			this.renderList();
+			return this;
+		},
+		renderList: function() {
+			var listHtml = '';
+			var filter = this.filter;
+			console.log(this.model)
+			_.each(this.model, function(value) {
+				if(
+					(filter === undefined) ||
+					(filter === '') ||
+					(value.name.toLowerCase().indexOf(filter) !== -1)
+				) {
+					listHtml += _.template($('#orion-plugins-item-template').html())({ plugin: value });
+				}
+			});
+			this.$('.orion-list-plugins').html(listHtml);
+			return this;
+		},
+		filterList: function(e) {
+			e.preventDefault();
+			this.filter = ($('#orion-plugin-name-filter').val() === undefined) ? '': $('#orion-plugin-name-filter').val().toLowerCase();
+			return this.renderList();
+		},
+		updateList: function() {
+			var self = this;
+			$.post(
+				orion_data.ajax_url,
+				{action: 'orion_get_plugins'},
+				function(response) {
+					if(response.success){
+						self.model = response.data;
+					} else {
+						self.$el.prepend($('#orion-request-failed-template').html());
+					}
+				}
+			).then(function() {
+				self.renderList();
+			});
+			return this;
+		},
+		addPlugin: function(e) {
+			e.preventDefault();
+			$('#orion-plugin-install-submit').addClass('active');
+			var jar_url = (this.$('#orion-plugin-name').val() === undefined) ? '': this.$('#orion-plugin-name').val();
+			if(jar_url === '') {
+				return this;
+			} else {
+				var self = this;
+				$.post(
+					orion_data.ajax_url,
+					{
+						action: 'orion_plugin_install',
+						jar_url: jar_url
+					},
+					function(response) {
+						if(!response.success) {
+							self.$el.prepend($('#orion-request-failed-template').html());
+						} else {
+							self.$('#orion-plugin-name').val(null);
+							self.updateList();
+						}
+					}
+				).then(function() {
+					$('#orion-plugin-install-submit').removeClass('active');
+				});
+			}
+			return this;
+		},
+		enablePlugin: function(e) {
+			e.preventDefault();
+			var self = this;
+			var plugin_name = $(e.target).data('name');
+			$(e.target).addClass('active');
+			$.post(
+				orion_data.ajax_url,
+				{
+					action: 'orion_plugin_toggle_state',
+					plugin_name: plugin_name,
+					is_it: false
+				},
+				function(response) {
+					if(response.success) {
+						console.log(response)
+						self.updateList();
+					} else {
+						self.$el.prepend($('#orion-request-failed-template').html());
+					}
+				}
+			).then(function() {
+				$(e.target).removeClass('active');
+			});
+			return this;
+		},
+		disablePlugin: function(e) {
+			e.preventDefault();
+			var self = this;
+			var plugin_name = $(e.target).data('name');
+			$(e.target).addClass('active');
+			$.post(
+				orion_data.ajax_url,
+				{
+					action: 'orion_plugin_toggle_state',
+					plugin_name: plugin_name,
+					is_it: true
+				},
+				function(response) {
+					if(!response.success) {
+						console.log(response)
+						self.$el.prepend($('#orion-request-failed-template').html());
+					} else {
+						self.updateList();
+					}
+				}
+			).then(function() {
+				$(e.target).removeClass('active');
+			});
+			return this;
+		},
+		listPluginCommands: function(e) {
+			e.preventDefault();
+			var self = this;
+			var pluginName = $(e.target).data('name');
+			var plugin;
+			var pluginCommands = {};
+			// Get the plugin
+			_.each(this.model, function(value, index) {
+				if(value.name === pluginName) {
+					plugin = self.model[index];
+				}
+			});
+
+			_.each(Object.getOwnPropertyNames(plugin.commands), function(value, index) {
+				var command = plugin.commands[value];
+				command.source = value;
+				plugin.commands[value] = command;
+			});
+			console.log(plugin.commands);
+
+			var listHtml = '<li><button class="button orion-commands-close"><i class="dashicons dashicons-dismiss"></i></button></li>';
+
+			_.each(plugin.commands, function(value, index) {
+				listHtml += _.template($('#orion-plugin-command-item-template').html())({command: value});
+			});
+
+			this.$('#orion-commands-' + plugin.name).html(listHtml);
+
+			return this;
+		},
+		hidePluginCommands: function(e) {
+			e.preventDefault();
+			var commandsList = $(e.target).parent().parent();
+			commandsList.html(null);
 			return this;
 		}
 	});

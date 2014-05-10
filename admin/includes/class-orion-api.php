@@ -56,7 +56,10 @@ class Orion_API {
 			'update_player_gamemode',
 			'toggle_player_it',
 			'send_message',
-			'kick_player'
+			'kick_player',
+			'get_plugins',
+			'plugin_toggle_state',
+			'plugin_install'
 		);
 
 		foreach ($this->endpoints as $e) {
@@ -187,5 +190,40 @@ class Orion_API {
 	public function kick_player() {
 		$player_name = sanitize_text_field( $_POST['player_name'] );
 		$this->call( 'players.name.kick', array( $player_name, __( 'You\'ve been kicked.', 'orion' ) ) );
+	}
+
+	public function get_plugins() {
+		$this->request = $this->call( 'plugins' );
+		$this->response = $this->request[0];
+		( $this->response['is_success'] ) ?
+			wp_send_json_success( $this->response[$this->response['result']] ) :
+			wp_send_json_error( $this->response[$this->response['result']] );
+	}
+
+	public function plugin_toggle_state() {
+		$plugin_name = sanitize_text_field( $_POST['plugin_name'] );
+
+		$is_it = ( $_POST['is_it'] === 'true' );
+		$is_it = is_bool($is_it) ? $is_it : false;
+
+		$method = '';
+		$args = array( $plugin_name );
+
+		$method = ( $is_it ) ? 'disable' : 'enable';
+
+		$this->request = $this->call( 'plugins.name.' . $method, $args );
+		$this->response = $this->request[0];
+		( $this->response['is_success'] ) ?
+			wp_send_json_success() :
+			wp_send_json_error( $this->response[$this->response['result']] );
+	}
+
+	public function plugin_install() {
+		$jar_url = esc_url_raw( $_POST['jar_url'] );
+		$this->request = $this->call( 'plugins.install', array( $jar_url ) );
+		$this->response = $this->request[0];
+		( $this->response['is_success'] ) ?
+			wp_send_json_success( $this->response[$this->response['result']] ) :
+			wp_send_json_error( $this->response[$this->response['result']] );
 	}
 }
